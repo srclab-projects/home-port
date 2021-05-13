@@ -1,0 +1,15 @@
+plugins {
+  id 'build.jar'
+}
+
+description = "Ship Starter for Test"
+
+java {
+  registerFeature('optionalSupport') {
+    usingSourceSet(sourceSets.main)
+  }
+}
+
+dependencies {
+  api project(":ship-test")
+}
