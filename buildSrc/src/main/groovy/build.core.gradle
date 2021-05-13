@@ -1,0 +1,69 @@
+import java.nio.file.Files
+import java.nio.file.Paths
+
+plugins {
+  id 'build.repositories'
+}
+
+final ThreadLocal<Project> localProject = ThreadLocal.withInitial { project }
+
+static boolean isEnable(Object value) {
+  if (value == null) {
+    return false
+  }
+  if (value instanceof Boolean) {
+    return value
+  }
+  String valueToString = value.toString().trim()
+  return valueToString.equalsIgnoreCase("true") ||
+    valueToString.equalsIgnoreCase("yes") ||
+    valueToString.equalsIgnoreCase("enbale") ||
+    valueToString.equalsIgnoreCase("1") ||
+    valueToString.equalsIgnoreCase("t") ||
+    valueToString.equalsIgnoreCase("open")
+}
+
+static String currentGradleDirectoryPath(buildscript) {
+  java.nio.file.Path sourcePath = buildscript.sourceFile.toPath()
+  def parent = sourcePath.getParent()
+  return parent.toString() + File.separator
+}
+
+static String readFileAsString(String path, String charset) {
+  return new String(Files.readAllBytes(
+    Paths.get(path)
+  ), charset)
+}
+
+ext["utils"] = [
+  isEnable                  : this.&isEnable,
+  currentGradleDirectoryPath: this.&currentGradleDirectoryPath,
+  readFileAsString          : this.&readFileAsString,
+]
+
+class Printer {
+
+  private final ThreadLocal<Project> localProject;
+
+  Printer(ThreadLocal<Project> localProject) {
+    this.localProject = localProject
+  }
+
+  def info(message) {
+    int logLevel = localProject.get().infos.logLevel
+    if (logLevel > 100) {
+      return
+    }
+    println(">> info: $message")
+  }
+
+  def debug(message) {
+    int logLevel = localProject.get().infos.logLevel
+    if (logLevel > 50) {
+      return
+    }
+    println(">> debug: $message")
+  }
+}
+
+ext["printer"] = new Printer(localProject)
