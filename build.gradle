@@ -5,7 +5,7 @@ plugins {
 
 initProjectConfigure(project)
 
-description = "Build for Ship Projects"
+description = "Build for Homeport"
 
 printer.info("Build $project.name")
 
@@ -43,16 +43,16 @@ private static def newInfo() {
     logLevel     : 100,
 
     //Version
-    version      : "0.0.0",
+    version      : "0.0.1",
 
     //Group
-    group        : "xyz.srclab.ship",
+    group        : "xyz.srclab.homeport",
 
     //Project url
-    url          : "https://github.com/srclab-projects/ship",
+    url          : "https://github.com/srclab-projects/homeport",
 
     //Project inception year
-    inceptionYear: "2020",
+    inceptionYear: "2021",
 
     //Licenses
     licenses     : [
@@ -82,7 +82,7 @@ private static def newInfo() {
     //Publish info
     publish      : [
       //Whether publish
-      enablePublish: true,
+      enablePublish: false,
 
       //Whether publish as snapshot
       isSnapshot   : false,

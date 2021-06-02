@@ -2,7 +2,7 @@ plugins {
   id 'build.jar'
 }
 
-description = "Ship Core: Core and basic interfaces, functions and utilities for Ship."
+description = "Homeport Server"
 
 java {
   registerFeature('optionalSupport') {
@@ -11,18 +11,20 @@ java {
 }
 
 dependencies {
-  api platform(project(":ship-dependencies"))
+  implementation platform(project(":homeport-dependencies"))
 
-  api "xyz.srclab.common:boat"
-  api "xyz.srclab.spring.boot:boat-spring-boot-starter"
+  implementation "xyz.srclab.common:boat"
+  implementation "xyz.srclab.spring.boot:boat-spring-boot-starter"
 
-  testCompile project(":ship-starters:ship-starter-test")
+  testCompile project(":homeport-test")
 
-  kapt platform(project(":ship-dependencies"))
+  kapt platform(project(":homeport-dependencies"))
   kapt "org.springframework.boot:spring-boot-autoconfigure-processor"
   kapt "org.springframework.boot:spring-boot-configuration-processor"
 
   //developmentOnly "org.springframework.boot:spring-boot-devtools"
 }
+
+utils.writeBuildInfos(project, "src/main/resources/META-INF/build.properties")
 
 compileJava.inputs.files(processResources)

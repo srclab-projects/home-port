@@ -4,7 +4,7 @@ plugins {
   id 'build.platform'
 }
 
-description = "Ship Spring Boot Dependencies Management"
+description = "Homeport Dependencies Management"
 
 javaPlatform {
   allowDependencies()

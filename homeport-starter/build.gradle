@@ -2,7 +2,7 @@ plugins {
   id 'build.jar'
 }
 
-description = "Ship Starter for Test"
+description = "Application Starter for Homeport"
 
 java {
   registerFeature('optionalSupport') {
@@ -11,5 +11,5 @@ java {
 }
 
 dependencies {
-  api project(":ship-test")
+  implementation project(":homeport-server")
 }

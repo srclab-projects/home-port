@@ -1,0 +1,20 @@
+plugins {
+  id "build.jar"
+}
+
+description = "Homeport Test Dependencies Management"
+
+java {
+  registerFeature('optionalSupport') {
+    usingSourceSet(sourceSets.main)
+  }
+}
+
+dependencies {
+  implementation platform(project(":homeport-dependencies"))
+
+  implementation "xyz.srclab.common:boat-test"
+  implementation "xyz.srclab.spring.boot:boat-spring-boot-starter-test"
+  implementation "org.springframework.boot:spring-boot-starter-test"
+  implementation "org.openjdk.jmh:jmh-core"
+}
