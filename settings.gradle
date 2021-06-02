@@ -10,16 +10,8 @@
 //  }
 //}
 
-rootProject.name = 'ship-build'
+rootProject.name = 'homeport-build'
 
-file("${rootDir}/").eachDir { dir ->
-  if (dir.name == "ship-starters") {
-    dir.eachDir { subDir ->
-      include ":${dir.name}:${subDir.name}"
-    }
-    return
-  }
-  if (dir.name.startsWith("ship-")) {
-    include ":${dir.name}"
-  }
+file("${rootDir}/").eachDirMatch(~/homeport-.*/) { dir ->
+  include ":${dir.name}"
 }
