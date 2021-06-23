@@ -1,0 +1,19 @@
+plugins {
+  id 'build.jar'
+}
+
+description = "Home Port Schema"
+
+java {
+  registerFeature('optionalSupport') {
+    usingSourceSet(sourceSets.main)
+  }
+}
+
+dependencies {
+  implementation platform(project(":home-port-dependencies"))
+
+  testCompile project(":home-port-test")
+
+  //developmentOnly "org.springframework.boot:spring-boot-devtools"
+}

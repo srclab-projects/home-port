@@ -15,6 +15,7 @@ dependencies {
 
   implementation "xyz.srclab.common:boat"
   implementation "xyz.srclab.spring.boot:boat-spring-boot-starter"
+  implementation project(":home-port-schema")
 
   testCompile project(":home-port-test")
 
