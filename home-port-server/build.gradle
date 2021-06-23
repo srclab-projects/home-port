@@ -2,7 +2,7 @@ plugins {
   id 'build.jar'
 }
 
-description = "Homeport Server"
+description = "Home Port Server"
 
 java {
   registerFeature('optionalSupport') {

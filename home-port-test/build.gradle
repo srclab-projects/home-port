@@ -2,7 +2,7 @@ plugins {
   id "build.jar"
 }
 
-description = "Homeport Test Dependencies Management"
+description = "Home Port Test Dependencies Management"
 
 java {
   registerFeature('optionalSupport') {

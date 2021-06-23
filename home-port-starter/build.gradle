@@ -2,7 +2,7 @@ plugins {
   id 'build.jar'
 }
 
-description = "Application Starter for Homeport"
+description = "Application Starter for Home Port"
 
 java {
   registerFeature('optionalSupport') {
