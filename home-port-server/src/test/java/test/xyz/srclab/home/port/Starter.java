@@ -1,4 +1,4 @@
-package test.xyz.srclab.ship.properties;
+package test.xyz.srclab.home.port;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
