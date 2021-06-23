@@ -11,14 +11,14 @@ java {
 }
 
 dependencies {
-  implementation platform(project(":homeport-dependencies"))
+  implementation platform(project(":home-port-dependencies"))
 
   implementation "xyz.srclab.common:boat"
   implementation "xyz.srclab.spring.boot:boat-spring-boot-starter"
 
-  testCompile project(":homeport-test")
+  testCompile project(":home-port-test")
 
-  kapt platform(project(":homeport-dependencies"))
+  kapt platform(project(":home-port-dependencies"))
   kapt "org.springframework.boot:spring-boot-autoconfigure-processor"
   kapt "org.springframework.boot:spring-boot-configuration-processor"
 

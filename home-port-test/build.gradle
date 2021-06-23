@@ -11,7 +11,7 @@ java {
 }
 
 dependencies {
-  implementation platform(project(":homeport-dependencies"))
+  implementation platform(project(":home-port-dependencies"))
 
   implementation "xyz.srclab.common:boat-test"
   implementation "xyz.srclab.spring.boot:boat-spring-boot-starter-test"

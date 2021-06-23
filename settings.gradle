@@ -10,8 +10,8 @@
 //  }
 //}
 
-rootProject.name = 'homeport-build'
+rootProject.name = 'home-port-build'
 
-file("${rootDir}/").eachDirMatch(~/homeport-.*/) { dir ->
+file("${rootDir}/").eachDirMatch(~/home-port-.*/) { dir ->
   include ":${dir.name}"
 }

@@ -11,5 +11,5 @@ java {
 }
 
 dependencies {
-  implementation project(":homeport-server")
+  implementation project(":home-port-server")
 }
