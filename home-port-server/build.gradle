@@ -14,8 +14,11 @@ dependencies {
   implementation platform(project(":home-port-dependencies"))
 
   implementation "xyz.srclab.common:boat"
-  implementation "xyz.srclab.spring.boot:boat-spring-boot-starter"
+  implementation "xyz.srclab.spring.boot:boat-spring-boot-starter-web"
   implementation project(":home-port-schema")
+
+  implementation "org.springframework.boot:spring-boot-starter-security"
+  implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
 
   testCompile project(":home-port-test")
 

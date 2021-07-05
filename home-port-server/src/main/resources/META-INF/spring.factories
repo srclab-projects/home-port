@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  xyz.srclab.home.port.autoconfigure.HomePortAutoConfiguration
+  xyz.srclab.home.port.server.autoconfigure.HomePortServerAutoConfiguration
