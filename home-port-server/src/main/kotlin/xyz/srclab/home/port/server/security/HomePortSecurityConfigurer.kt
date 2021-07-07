@@ -12,7 +12,7 @@ import org.springframework.security.web.savedrequest.HttpSessionRequestCache
 
 @EnableWebSecurity
 @Configuration
-open class HomePortSecurityConfig : WebSecurityConfigurerAdapter() {
+open class HomePortSecurityConfigurer : WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity) {
         http.authorizeRequests()
@@ -50,6 +50,6 @@ open class HomePortSecurityConfig : WebSecurityConfigurerAdapter() {
 
     companion object {
 
-        private val logger: Logger = LoggerFactory.getLogger(HomePortSecurityConfig::class.java)
+        private val logger: Logger = LoggerFactory.getLogger(HomePortSecurityConfigurer::class.java)
     }
 }
