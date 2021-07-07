@@ -1,17 +1,23 @@
 package xyz.srclab.home.port.server.security
 
 import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
+import xyz.srclab.home.port.server.dao.user.UserPasswordEntity
 
-open class UserPasswordDetails(
+open class UserSecurity(
     private val userPassword: UserPasswordEntity,
-    private val authorities: List<String>
+    authorities: List<String>
 ) : UserDetails {
 
-    override fun getAuthorities(): MutableCollection<out GrantedAuthority> =
+    private var grantedAuthorities: MutableCollection<out GrantedAuthority> =
         authorities.map {
-            GrantedAuthority { it }
+            SimpleGrantedAuthority(it)
         }.toMutableList()
+
+    override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
+        return grantedAuthorities
+    }
 
     override fun getPassword(): String = userPassword.passwordEncoded!!
 
@@ -24,4 +30,8 @@ open class UserPasswordDetails(
     override fun isCredentialsNonExpired(): Boolean = true
 
     override fun isEnabled(): Boolean = true
+
+    open fun setAuthorities(grantedAuthorities: MutableCollection<out GrantedAuthority>) {
+        this.grantedAuthorities = grantedAuthorities
+    }
 }

@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.stereotype.Component
+import xyz.srclab.home.port.server.dao.user.*
 import java.util.*
 import kotlin.collections.HashSet
 
@@ -24,27 +25,5 @@ open class HomePortUserDetailService : UserDetailsService {
         if (userPassword === null) {
             throw UsernameNotFoundException("User not found: $username")
         }
-
-        val userAuthorityExample = UserAuthorityEntity()
-        userAuthorityExample.ownerId = userPassword.id
-        userAuthorityExample.ownerType = UserAuthorityEntity.OwnerType.USER
-        val authorities:MutableSet<String> = HashSet()
-        val roles:MutableSet<String> = HashSet()
-
-        fun findAllAuthorities(){
-            for (userAuthorityEntity in userAuthorityDao.findAll(Example.of(userAuthorityExample))) {
-                if (userAuthorityEntity.authorityType == UserAuthorityEntity.AuthorityType.AUTHORITY) {
-                    authorities.add(userAuthorityEntity.authority!!)
-                    continue
-                }
-                if (userAuthorityEntity.authorityType == UserAuthorityEntity.AuthorityType.ROLE) {
-                    authorities.add(userAuthorityEntity.authority!!)
-                    roles.add(userAuthorityEntity.authority!!)
-                    continue
-                }
-            }
-        }
-
-
     }
 }
